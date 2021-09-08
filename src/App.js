@@ -5,6 +5,8 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+
 import Home from "./Components/home";
 import Form from "./Components/form";
 import Table from "./Components/table";
@@ -14,16 +16,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-list: [],
-person:{
-        name: "",
-        surname: "",
-        position: "",
-        task: "",
-        salary: "",
-        date: "",
-        isChecked: true,
-}
+      list: [],
+      name: "",
+      surname: "",
+      position: "",
+      task: "",
+      salary: "",
+      date: "",
+      isChecked: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -42,21 +42,35 @@ person:{
   };
 
   handleSubmit = (event) => {
+    event.preventDefault();
+
     const { name, surname, position, task, salary, date, isChecked } =
       this.state;
-      event.preventDefault();
+    let newState = {
+      id: uuidv4(),
+      name,
+      surname,
+      position,
+      task,
+      salary,
+      date,
+      isChecked,
+    };
+    if (name && surname && position && task && salary && date) {
       this.setState({
-name: name,
-surname:surname,
-position:position,
-task:task,
-salary:salary,
-date:date,
-isChecked:isChecked
-
-      })
-      };
-    
+        ...this.state,
+        list: [...this.state.list, newState],
+      });
+      this.setState({
+        name: "",
+        surname: "",
+        position: "",
+        task: "",
+        salary: "",
+        date: "",
+      });
+    }
+  };
 
   render() {
     return (
@@ -71,16 +85,16 @@ isChecked:isChecked
               mainState={this.state}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              handleToggle={this.toggleChange}
             />
           </Route>
-          <Route path="/List" component={Table} />
-          {/* <Route path="/Edit" component={Edit} /> */}
+          <Route path="/List">
+            <Table list={this.state.list} handleToggle={this.toggleChange}
+ />
+          </Route>
         </Switch>
       </Router>
     );
   }
 }
-
 
 export default App;
