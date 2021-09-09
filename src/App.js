@@ -23,28 +23,55 @@ class App extends Component {
       task: "",
       salary: "",
       date: "",
-      isChecked: false,
-    };
+      isSelectAll: false,
+      foodChoices: [{ status: false, name: 'pizza' },
+      { status: false, name: 'burger' }] 
+      };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.toggleChange = this.toggleChange.bind(this);
   }
 
   handleChange = (event) => {
     this.setState({ ...this.state, [event.target.name]: event.target.value });
   };
 
-  toggleChange = () => {
-    this.setState({
-      isChecked: !this.state.isChecked,
-    });
-  };
+  handleCheckboxChange (e) {
+    const newCheckBoxes = this.state.foodChoices
+      .map(choice => {
+        if (choice.name === e.target.name) {
+          return { ...choice, status: e.target.checked }
+        }
+
+        return choice
+      })
+
+    this.setState({ foodChoices: newCheckBoxes })
+  }
+
+  handleCheckboxAll (e) {
+    const newCheckBoxs = this.state.foodChoices
+      .map(choice => {
+        return { ...choice, status: e.target.checked }
+      }
+      )
+
+    this.setState({ foodChoices: newCheckBoxs, isSelectAll: e.target.checked })
+  }
+
+  displayCheckedItems () {
+    var selectedItems = this.state.foodChoices.filter(choice => choice.status == true)
+    return (<div>
+      {selectedItems.map(item => <div> {item.name} </div>)}
+    </div>)
+
+  }
+
 
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const { name, surname, position, task, salary, date, isChecked } =
+    const { name, surname, position, task, salary, date } =
       this.state;
     let newState = {
       id: uuidv4(),
@@ -54,7 +81,7 @@ class App extends Component {
       task,
       salary,
       date,
-      isChecked,
+      
     };
     if (name && surname && position && task && salary && date) {
       this.setState({
@@ -76,7 +103,8 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/home" exact component={Home} />
+
+          <Route path="/home" component={Home} />
           <Route exact path="/">
             <Redirect to="/home" />
           </Route>
@@ -85,11 +113,13 @@ class App extends Component {
               mainState={this.state}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
+              handleCheckboxChange={this.handleCheckboxChange}
+              handleCheckboxAll={this.handleCheckboxAll}
             />
           </Route>
           <Route path="/List">
-            <Table list={this.state.list} handleToggle={this.toggleChange}
- />
+          <Table list={this.state.list} displayCheckedItems={this.displayCheckedItems}
+/>
           </Route>
         </Switch>
       </Router>

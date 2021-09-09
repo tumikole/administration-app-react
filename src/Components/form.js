@@ -1,12 +1,20 @@
-import React, { Component } from 'react';
-import Navbar from './nav'
-import '../CSS/form.css'
+import React, { Component } from "react";
+import Navbar from "./nav";
+import "../CSS/form.css";
 class form extends Component {
+  constructor(props){
+    super(props);
+    this.state ={
+       
+    }
+    
+  }
 
-  
+ 
   render() {
-    const {name, surname, position, task, salary, date, isChecked } = this.props.mainState;
-  
+    const { name, surname, position, task, salary, date, isSelectAll, foodChoices } =
+      this.props.mainState;
+
     return (
       <div>
         <div>
@@ -18,80 +26,98 @@ class form extends Component {
           />
         </div>
         <form onSubmit={this.props.handleSubmit}>
-          <label for="name">
-            First name:
-            <input
-              style={{
-                backgroundColor: name == "" ? "red" : "blue",
-              }}
-              type="text"
-              name="name"
-              value={name}
-              onChange={this.props.handleChange}
-            />
-          </label>
+          First name:
+          <input
+            class="form-control"
+            style={{
+              borderColor: name.length < 6 ? "red" : "green",
+            }}
+            type="text"
+            name="name"
+            value={name}
+            onChange={this.props.handleChange}
+          />
           <br />
-          <label for="surname">
-            Last name:
-            <input
-              type="text"
-              name="surname"
-              value={surname}
-              onChange={this.props.handleChange}
-            />
-          </label>
+          Last name:
+          <input
+          style={{
+            borderColor: surname.length < 6 ? "red" : "green",
+          }}
+            class="form-control"
+            type="text"
+            name="surname"
+            value={surname}
+            onChange={this.props.handleChange}
+          />
           <br />
-          <label for="position">
-            Position:
-            <input
-              type="text"
-              name="position"
-              value={position}
-              onChange={this.props.handleChange}
-            />
-          </label>
+          Position:
+          <select
+          style={{
+            borderColor: position.length < 6 ? "red" : "green",
+          }}
+            class="form-control"
+            name="position"
+            value={position}
+            onChange={this.props.handleChange}
+          >
+            <option></option>
+            <option>Manager</option>
+            <option>Senior Developer</option>
+            <option>Junior Developer</option>
+          </select>
           <br />
-          <label for="tsk">
-            Task:
-            <input
-              type="text"
-              name="task"
-              value={task}
-              onChange={this.props.handleChange}
-            />
-          </label>
+          Task:
+          <input
+          style={{
+            borderColor: task.length < 6 ? "red" : "green",
+          }}
+            class="form-control"
+            type="text"
+            name="task"
+            value={task}
+            onChange={this.props.handleChange}
+          />
           <br />
-          <label for="salary">
-            Salary:
-            <input
-              type="number"
-              name="salary"
-              value={salary}
-              onChange={this.props.handleChange}
-            />
-          </label>
+          Salary:
+          <input
+          style={{
+            borderColor: salary.length < 3 ? "red" : "green",
+          }}
+            class="form-control"
+            type="number"
+            name="salary"
+            value={salary}
+            onChange={this.props.handleChange}
+          />
           <br />
-          <label for="date">
-            Date:
-            <input
-              type="date"
-              name="date"
-              value={date}
-              onChange={this.props.handleChange}
-            />
-          </label>
+          Date:
+          <input
+          style={{
+            borderColor: date.length < 6 ? "red" : "green",
+          }}
+            class="form-control"
+            type="date"
+            name="date"
+            value={date}
+            onChange={this.props.handleChange}
+          />
           <br />
-          <label for="complete">
-            <input
-              name={isChecked}
-              type="checkbox"
-              defaultChecked={isChecked}
-              onChange={this.props.toggleChange}
-            />
-            Completed
-          </label>
+          <input
+                  checked={isSelectAll}
+                  name='checkboxAll'
+                  onChange={(e) => this.props.handleCheckboxAll(e)} type="checkbox" />
+
+{foodChoices.map(choice =>
+                <div>
+                  <label> {choice.name} </label>
+                  <input
+                    checked={choice.status}
+                    name={choice.name}
+                    onChange={(e) => this.handleCheckboxChange(e)} type="checkbox" />
+                </div>
+                    )}
           <br />
-          <input type="submit" value="Submit" />
+          <input  type="submit" value="Submit" />
         </form>
       </div>
     );

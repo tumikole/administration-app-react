@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import Navbar from './nav'
+
 class table extends Component {
   render() {
+        console.log("tumi", this.props);
+
     return (
       <div>
         <Navbar
           navBar={[
             { name: "Home", location: "/Home" },
             { name: "Add", location: "/Form" },
-          ]}
+          ]}  
         />
+
         <br />
         <hr />
 
@@ -25,7 +29,7 @@ class table extends Component {
               <th scope="col">Salary</th>
               {/* <th scope="col">Food</th> */}
               <th scope="col">Date</th>
-              <th scope="col">Complete</th>
+              <th scope="col">Food</th>
             </tr>
           </thead>
           <tbody>
@@ -38,6 +42,8 @@ class table extends Component {
                   <td>{person.salary}</td>
                   <td>{person.date}</td>
                   <td>{person.task}</td>
+                  <td>{this.props.displayCheckedItems()}</td>
+
                   <td></td>
                 </tr>
               );
