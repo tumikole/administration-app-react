@@ -106,13 +106,13 @@ class form extends Component {
             onChange={this.props.handleChange}
           />
           <br />
-          <input
+          {/* <input
             checked={isSelectAll}
             name="checkboxAll"
             onChange={(e) => this.props.handleCheckboxAll(e)}
             type="checkbox"
-          />
-          {foodChoices.map((choice) => (
+          /> */}
+          {/* {foodChoices.map((choice) => (
             <div>
               <label> {choice.name} </label>
               <input
@@ -122,7 +122,7 @@ class form extends Component {
                 type="checkbox"
               />
             </div>
-          ))}
+          ))} */}
           <br />
           <input type="submit" value="Submit" />
         </form>

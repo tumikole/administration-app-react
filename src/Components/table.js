@@ -32,7 +32,7 @@ class table extends Component {
               <th scope="col">Food</th>
             </tr>
           </thead>
-          <tbody>
+          {/* <tbody>
             {this.props.list.map((person) => {
               return (
                 <tr key={person}>
@@ -48,7 +48,7 @@ class table extends Component {
                 </tr>
               );
             })}
-          </tbody>
+          </tbody> */}
         </table>
       </div>
     );
