@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import Navbar from './nav'
+import React, { Component } from "react";
+import Navbar from "./nav";
 
 class table extends Component {
   render() {
-        console.log("tumi", this.props);
+    console.log("tumi", this.props);
 
     return (
       <div>
@@ -11,7 +11,7 @@ class table extends Component {
           navBar={[
             { name: "Home", location: "/Home" },
             { name: "Add", location: "/Form" },
-          ]}  
+          ]}
         />
 
         <br />
@@ -35,7 +35,7 @@ class table extends Component {
           <tbody>
             {this.props.list.map((person) => {
               return (
-                <tr key={person.id}>
+                <tr key={person}>
                   <td>{person.name}</td>
                   <td>{person.surname}</td>
                   <td>{person.position}</td>
@@ -52,8 +52,7 @@ class table extends Component {
         </table>
       </div>
     );
+  }
 }
-}
-
 
 export default table;

@@ -2,18 +2,22 @@ import React, { Component } from "react";
 import Navbar from "./nav";
 import "../CSS/form.css";
 class form extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state ={
-       
-    }
-    
+    this.state = {};
   }
 
- 
   render() {
-    const { name, surname, position, task, salary, date, isSelectAll, foodChoices } =
-      this.props.mainState;
+    const {
+      name,
+      surname,
+      position,
+      task,
+      salary,
+      date,
+      isSelectAll,
+      foodChoices,
+    } = this.props.mainState;
 
     return (
       <div>
@@ -40,9 +44,9 @@ class form extends Component {
           <br />
           Last name:
           <input
-          style={{
-            borderColor: surname.length < 6 ? "red" : "green",
-          }}
+            style={{
+              borderColor: surname.length < 6 ? "red" : "green",
+            }}
             class="form-control"
             type="text"
             name="surname"
@@ -52,9 +56,9 @@ class form extends Component {
           <br />
           Position:
           <select
-          style={{
-            borderColor: position.length < 6 ? "red" : "green",
-          }}
+            style={{
+              borderColor: position.length < 6 ? "red" : "green",
+            }}
             class="form-control"
             name="position"
             value={position}
@@ -68,9 +72,9 @@ class form extends Component {
           <br />
           Task:
           <input
-          style={{
-            borderColor: task.length < 6 ? "red" : "green",
-          }}
+            style={{
+              borderColor: task.length < 6 ? "red" : "green",
+            }}
             class="form-control"
             type="text"
             name="task"
@@ -80,9 +84,9 @@ class form extends Component {
           <br />
           Salary:
           <input
-          style={{
-            borderColor: salary.length < 3 ? "red" : "green",
-          }}
+            style={{
+              borderColor: salary.length < 3 ? "red" : "green",
+            }}
             class="form-control"
             type="number"
             name="salary"
@@ -92,9 +96,9 @@ class form extends Component {
           <br />
           Date:
           <input
-          style={{
-            borderColor: date.length < 6 ? "red" : "green",
-          }}
+            style={{
+              borderColor: date.length < 6 ? "red" : "green",
+            }}
             class="form-control"
             type="date"
             name="date"
@@ -103,21 +107,24 @@ class form extends Component {
           />
           <br />
           <input
-                  checked={isSelectAll}
-                  name='checkboxAll'
-                  onChange={(e) => this.props.handleCheckboxAll(e)} type="checkbox" />
-
-{foodChoices.map(choice =>
-                <div>
-                  <label> {choice.name} </label>
-                  <input
-                    checked={choice.status}
-                    name={choice.name}
-                    onChange={(e) => this.handleCheckboxChange(e)} type="checkbox" />
-                </div>
-                    )}
+            checked={isSelectAll}
+            name="checkboxAll"
+            onChange={(e) => this.props.handleCheckboxAll(e)}
+            type="checkbox"
+          />
+          {foodChoices.map((choice) => (
+            <div>
+              <label> {choice.name} </label>
+              <input
+                checked={choice.status}
+                name={choice.name}
+                onChange={this.props.handleCheckboxChange}
+                type="checkbox"
+              />
+            </div>
+          ))}
           <br />
-          <input  type="submit" value="Submit" />
+          <input type="submit" value="Submit" />
         </form>
       </div>
     );

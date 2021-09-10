@@ -30,6 +30,9 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+    this.displayCheckedItems = this.displayCheckedItems.bind(this)
+    this.handleCheckboxAll = this.handleCheckboxAll.bind(this)
   }
 
   handleChange = (event) => {
@@ -39,13 +42,14 @@ class App extends Component {
   handleCheckboxChange (e) {
     const newCheckBoxes = this.state.foodChoices
       .map(choice => {
+        
         if (choice.name === e.target.name) {
           return { ...choice, status: e.target.checked }
         }
 
         return choice
       })
-
+     
     this.setState({ foodChoices: newCheckBoxes })
   }
 
