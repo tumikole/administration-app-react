@@ -8,7 +8,9 @@ class Home extends Component {
       console.log('Home', this.props)
         return (
             <div>
-                <Navbar navBar={[{name:'Add',location:"/Form"},{name:'View List',location:"/List"}]} />
+                <Navbar navBar={[{name:'Add',location:"/Form"},
+                {name:'View List',location:"/List"},
+                { name: "Edit", location: "/Edit" }]} />
            
             <br/>
             

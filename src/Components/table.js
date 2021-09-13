@@ -3,7 +3,6 @@ import Navbar from "./nav";
 
 class table extends Component {
   render() {
-    console.log("tumi", this.props);
 
     return (
       <div>
@@ -11,6 +10,7 @@ class table extends Component {
           navBar={[
             { name: "Home", location: "/Home" },
             { name: "Add", location: "/Form" },
+            { name: "Edit", location: "/Edit" }
           ]}
         />
 
@@ -27,28 +27,32 @@ class table extends Component {
               <th scope="col">Position</th>
               <th scope="col">Task</th>
               <th scope="col">Salary</th>
-              {/* <th scope="col">Food</th> */}
-              <th scope="col">Date</th>
               <th scope="col">Food</th>
+              <th scope="col">Date</th>
+              <th scope="col">Complete</th>
+
+              
             </tr>
           </thead>
-          {/* <tbody>
+          <tbody>
             {this.props.list.map((person) => {
               return (
                 <tr key={person}>
                   <td>{person.name}</td>
                   <td>{person.surname}</td>
                   <td>{person.position}</td>
-                  <td>{person.salary}</td>
-                  <td>{person.date}</td>
                   <td>{person.task}</td>
+                  <td>{person.salary}</td>
                   <td>{this.props.displayCheckedItems()}</td>
+                  <td>{person.date}</td>
+                  <td>{person.checked}</td>
+
 
                   <td></td>
                 </tr>
               );
             })}
-          </tbody> */}
+          </tbody>
         </table>
       </div>
     );

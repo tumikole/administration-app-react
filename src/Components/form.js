@@ -17,6 +17,7 @@ class form extends Component {
       date,
       isSelectAll,
       foodChoices,
+      checked
     } = this.props.mainState;
 
     return (
@@ -26,6 +27,7 @@ class form extends Component {
             navBar={[
               { name: "home", location: "/Home" },
               { name: "View List", location: "/List" },
+              { name: "Edit", location: "/Edit" }
             ]}
           />
         </div>
@@ -106,13 +108,13 @@ class form extends Component {
             onChange={this.props.handleChange}
           />
           <br />
-          {/* <input
+          <input
             checked={isSelectAll}
             name="checkboxAll"
             onChange={(e) => this.props.handleCheckboxAll(e)}
             type="checkbox"
-          /> */}
-          {/* {foodChoices.map((choice) => (
+          />
+          {foodChoices.map((choice) => (
             <div>
               <label> {choice.name} </label>
               <input
@@ -122,8 +124,17 @@ class form extends Component {
                 type="checkbox"
               />
             </div>
-          ))} */}
+          ))}
           <br />
+          complete
+          <input
+           type="checkbox"
+           name="checked"
+           checked={checked}
+           onChange={this.props.handleCheck}
+           />
+
+          <br/>
           <input type="submit" value="Submit" />
         </form>
       </div>
