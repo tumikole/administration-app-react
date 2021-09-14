@@ -31,7 +31,14 @@ class form extends Component {
               { name: "Edit", location: "/Edit" },
             ]}
           />
+
         </div>
+<br />
+        <hr />
+
+        <h1 style={{ color:'red', textAlign: "center" }}>Add Employee</h1>
+        <div className="mainForm">
+          <br/>
         <form >
           First name:
           <input
@@ -155,6 +162,8 @@ class form extends Component {
                     </div>
                    
         </form>
+        <br/>
+        </div>
       </div>
     );
   }

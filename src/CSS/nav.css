@@ -1,5 +1,8 @@
 .navbar-dark{
-background-color: black;
+    position: sticky !important;
+    top:0;
+    bottom:0;
+background-color: rgb(102, 88, 49) !important;
 padding: 1px;
 }
 

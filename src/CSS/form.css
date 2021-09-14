@@ -1,9 +1,25 @@
-form{
-    display:flex;
-    flex-direction:column;
-    width:20%;
-    margin: auto;
-    text-align: center;
+.mainForm {
+  background-color: rgb(240, 210, 155);
+  width:40% !important;
+  margin:auto !important;
+  border-radius: 30px !important;
+  height: 80% !important;
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  color:red;
+}
+
+form,
+input:focus {
+outline:  none;
+color:red;
 }
 
 /* input{
@@ -11,7 +27,7 @@ form{
 
 } */
 
-.svg1{
-    width:120px !important;
-    cursor: pointer;
+.svg1 {
+  width: 120px !important;
+  cursor: pointer;
 }

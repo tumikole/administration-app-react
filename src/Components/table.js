@@ -28,7 +28,7 @@ class table extends Component {
         <br />
         <hr />
 
-        <h1 style={{ textAlign: "center" }}>Employee List</h1>
+        <h1 style={{ color:'red', textAlign: "center" }}>Employee List</h1>
         <hr />
         <table class="table">
           <thead class="thead-light">

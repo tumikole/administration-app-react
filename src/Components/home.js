@@ -15,7 +15,7 @@ class Home extends Component {
             <br/>
             
             <div>
-            <h1 style={{ textAlign:'center',}}>Employee Administrator</h1>
+            <h1 style={{ fontSize:80, color:'red', textAlign:'center',}}><u>Admin <span style={{ color:'blue',}}>App</span></u></h1>
             </div>
             </div>
         );

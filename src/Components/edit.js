@@ -17,7 +17,7 @@ class Edit extends Component {
         <br />
         <hr />
 
-        <h1 style={{ textAlign: "center" }}>Update Employee</h1>
+        <h1 style={{ color:'red', textAlign: "center" }}>Update/Edit Employee</h1>
 
         <hr />
         <table class="table">
