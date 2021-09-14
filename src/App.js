@@ -19,20 +19,22 @@ class App extends Component {
     super(props);
     this.state = {
       list: [],
-      id: uuidv4(),
+     
       name: "",
       surname: "",
       position: "",
+      language: "",
+
       task: "",
       salary: "",
       date: "",
-      checked: false,
-      update: false,
+      isChecked: false,
       isSelectAll: false,
       foodChoices: [
         { status: false, name: "pizza" },
         { status: false, name: "burger" },
       ],
+      update: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,16 +42,13 @@ class App extends Component {
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.displayCheckedItems = this.displayCheckedItems.bind(this);
     this.handleCheckboxAll = this.handleCheckboxAll.bind(this);
-    this.handleEdit = this.handleEdit.bind(this)
-    this.handleCheck = this.handleCheck.bind(this)
-
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
   }
 
   handleChange = (event) => {
     this.setState({ ...this.state, [event.target.name]: event.target.value });
   };
-
-
 
   handleCheckboxChange(e) {
     const newCheckBoxes = this.state.foodChoices.map((choice) => {
@@ -71,13 +70,11 @@ class App extends Component {
     this.setState({ foodChoices: newCheckBoxs, isSelectAll: e.target.checked });
   }
 
-  handleCheck = (event) => {
-    
-      this.setState({
-         checked: event.target.checked 
-        })
-    
-  }
+  handleCheck = () => {
+    this.setState({
+      isChecked:!this.state.isChecked
+    });
+  };
 
   displayCheckedItems() {
     var selectedItems = this.state.foodChoices.filter(
@@ -95,54 +92,61 @@ class App extends Component {
   handleEdit = () => {
     this.setState({
       update: !this.state.update
-       
-    })
+    });
+      // console.log("tumi", this.state.update)
+    
+  };
+
+  handleUpdateView = () => {
 
   }
 
-  updateEdit = () => {
-      return <div>
-      <input type="text" onClick={this.state.list}/>
-      </div>
-      }
-
-   
+     onDelete(event, index) {
+       console.log('tumi')
+        this.setState({
+            list: this.state.list.filter((item, itemIndex) => (index != itemIndex)),
+        });
+    };
+  
   
 
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const { name, surname, position, task, salary, date, checked } = this.state;
+    const { name, surname, position, task, salary, date, language } = this.state;
     let newState = {
       id: uuidv4(),
       name,
       surname,
       position,
+      language,
+
       task,
       salary,
-      date,
-      checked,
+      date
     };
-    if (name && surname && position && task && salary && date) {
+    if (name && surname && position && task && salary && date && language) {
       this.setState({
         ...this.state,
         list: [...this.state.list, newState],
       });
       this.setState({
-        id: uuidv4(),
+        
         name: "",
         surname: "",
         position: "",
+        language: "",
+
         task: "",
         salary: "",
         date: "",
-        checked: ""
+        
       });
-      console.log('Id', this.state)
     }
   };
 
   render() {
+    
     return (
       <Router>
         <Switch>
@@ -165,8 +169,7 @@ class App extends Component {
               list={this.state.list}
               displayCheckedItems={this.displayCheckedItems}
               // handleCheck = {this.handleCheck}
-              // handleCheck={this.handleCheck}
-
+              handleCheck={this.handleCheck}
             />
           </Route>
           <Route path="/Edit">
@@ -179,7 +182,8 @@ class App extends Component {
               handleCheckboxAll={this.handleCheckboxAll}
               displayCheckedItems={this.displayCheckedItems}
               handleEdit={this.handleEdit}
-
+              update={this.state.update}
+              // updateEdit={this.updateEdit}
             />
           </Route>
         </Switch>

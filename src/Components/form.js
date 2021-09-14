@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "./nav";
+import Save from '../static/SAVE.svg'
 import "../CSS/form.css";
 class form extends Component {
   constructor(props) {
@@ -15,9 +16,9 @@ class form extends Component {
       task,
       salary,
       date,
+      language,
       isSelectAll,
       foodChoices,
-      checked
     } = this.props.mainState;
 
     return (
@@ -27,11 +28,11 @@ class form extends Component {
             navBar={[
               { name: "home", location: "/Home" },
               { name: "View List", location: "/List" },
-              { name: "Edit", location: "/Edit" }
+              { name: "Edit", location: "/Edit" },
             ]}
           />
         </div>
-        <form onSubmit={this.props.handleSubmit}>
+        <form >
           First name:
           <input
             class="form-control"
@@ -56,6 +57,29 @@ class form extends Component {
             onChange={this.props.handleChange}
           />
           <br />
+          Programming Language:
+          <select
+            style={{
+              borderColor: position.length < 6 ? "red" : "green",
+            }}
+            class="form-control"
+            name="language"
+            value={language}
+            onChange={this.props.handleChange}
+          >
+            <option></option>
+            <option>Javascript</option>
+            <option>Python</option>
+            <option>C#</option>
+            <option>C++</option>
+            <option>Java</option>
+            <option>Visual Basic</option>
+            <option>PHP</option>
+            <option>SQL</option>
+            <option>Assembly</option>
+            <option>Groovy</option>
+          </select>
+          <br />
           Position:
           <select
             style={{
@@ -67,7 +91,6 @@ class form extends Component {
             onChange={this.props.handleChange}
           >
             <option></option>
-            <option>Manager</option>
             <option>Senior Developer</option>
             <option>Junior Developer</option>
           </select>
@@ -126,16 +149,11 @@ class form extends Component {
             </div>
           ))}
           <br />
-          complete
-          <input
-           type="checkbox"
-           name="checked"
-           checked={checked}
-           onChange={this.props.handleCheck}
-           />
-
-          <br/>
-          <input type="submit" value="Submit" />
+         
+          <div className="edit-container">
+                      <img className="svg1" src={Save} alt="" onClick={this.props.handleSubmit}/>
+                    </div>
+                   
         </form>
       </div>
     );
