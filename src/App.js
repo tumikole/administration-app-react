@@ -44,6 +44,8 @@ class App extends Component {
     this.handleCheckboxAll = this.handleCheckboxAll.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+
   }
 
   handleChange = (event) => {
@@ -91,8 +93,9 @@ class App extends Component {
 
   handleEdit = () => {
     this.setState({
-      update: !this.state.update
-    });
+      update: [
+        ...this.state.list
+      ]});
       // console.log("tumi", this.state.update)
     
   };
@@ -101,11 +104,10 @@ class App extends Component {
 
   }
 
-     onDelete(event, index) {
-       console.log('tumi')
-        this.setState({
-            list: this.state.list.filter((item, itemIndex) => (index != itemIndex)),
-        });
+     handleDelete = index => {
+      const list = [...this.state.list];
+      list.splice(index, 1);
+      this.setState({ list });
     };
   
   
@@ -168,7 +170,7 @@ class App extends Component {
             <Table
               list={this.state.list}
               displayCheckedItems={this.displayCheckedItems}
-              // handleCheck = {this.handleCheck}
+              handleDelete = {this.handleDelete}
               handleCheck={this.handleCheck}
             />
           </Route>

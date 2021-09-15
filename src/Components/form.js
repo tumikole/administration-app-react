@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "./nav";
 import Save from "../static/SAVE.svg";
+import {Link} from "react-router-dom";
 import "../CSS/form.css";
 class form extends Component {
   constructor(props) {
@@ -137,32 +138,40 @@ class form extends Component {
               onChange={this.props.handleChange}
             />
             <br />
+            <div className="checkbox">
+              <label>
             <input
               checked={isSelectAll}
               name="checkboxAll"
               onChange={(e) => this.props.handleCheckboxAll(e)}
               type="checkbox"
             />
+            SelectAll</label>
             {foodChoices.map((choice) => (
               <div>
-                <label> {choice.name} </label>
+                <label> 
                 <input
                   checked={choice.status}
                   name={choice.name}
                   onChange={this.props.handleCheckboxChange}
                   type="checkbox"
                 />
+                {choice.name} </label>
               </div>
             ))}
+            </div>
             <br />
-            <div className="edit-container">
+            <Link to="/List">
+            
               <img
                 className="svg1"
                 src={Save}
                 alt=""
                 onClick={this.props.handleSubmit}
               />
-            </div>
+              
+           
+            </Link>
           </form>
           <br />
         </div>

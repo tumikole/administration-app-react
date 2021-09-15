@@ -1,6 +1,6 @@
 .mainForm {
-  background-color: rgb(240, 210, 155);
-  width:40% !important;
+  background-color: rgb(160, 156, 149);
+  width:25% !important;
   margin:auto !important;
   border-radius: 30px !important;
   height: 80% !important;
@@ -30,4 +30,10 @@ color:red;
 .svg1 {
   width: 120px !important;
   cursor: pointer;
+}
+
+.checkbox{
+  background-color:rgb(189, 183, 170);
+  display: flex !important;
+  flex-direction: column !important;
 }

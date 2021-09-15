@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Navbar from "./nav";
 import Delete from "../static/delete.svg";
 import EditSvg from "../static/edit.svg";
-import '../CSS/table.css'
+import "../CSS/table.css";
 
 class table extends Component {
   render() {
@@ -28,7 +28,7 @@ class table extends Component {
         <br />
         <hr />
 
-        <h1 style={{ color:'red', textAlign: "center" }}>Employee List</h1>
+        <h1 style={{ color: "red", textAlign: "center" }}>Employee List</h1>
         <hr />
         <table class="table">
           <thead class="thead-light">
@@ -63,16 +63,20 @@ class table extends Component {
                     {txt}
                   </td>
                   <td>
-                    <div
-                      className="delete-container"
-                      
-                    >
-                      <img className="svg" onDelete={this.props.onDelete} src={Delete} alt="" />
+                  <div className="actionContainer">
+
+                  <div className="delete-container">
+                      <img
+                        className="svg"
+                        onClick={this.props.handleDelete}
+                        src={Delete}
+                        alt=""
+                      />
                     </div>
-                    <div className="edit-container">
+                    {/* <div className="edit-container">
                       <img className="svg" src={EditSvg} alt="" />
+                    </div> */}
                     </div>
-                   
                   </td>
                 </tr>
               );
