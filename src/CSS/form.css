@@ -1,10 +1,18 @@
+.formBody {
+  background-image: url("https://www.itprotoday.com/sites/itprotoday.com/files/styles/article_featured_retina/public/1218524083-1201x667-9174174_0.jpg?itok=NnByAq1F");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+
 .mainForm {
-  background-color: rgb(160, 156, 149);
+  /* background-color: rgb(25, 233, 248); */
   width:25% !important;
   margin:auto !important;
   border-radius: 30px !important;
   height: 80% !important;
-
+  
 }
 
 form {
@@ -13,13 +21,13 @@ form {
   width: 70%;
   margin: auto;
   text-align: center;
-  color:red;
+  color:white;
 }
 
 form,
 input:focus {
 outline:  none;
-color:red;
+color:white;
 }
 
 /* input{
@@ -33,7 +41,7 @@ color:red;
 }
 
 .checkbox{
-  background-color:rgb(189, 183, 170);
+  /* background-color:rgb(9, 224, 206); */
   display: flex !important;
   flex-direction: column !important;
 }

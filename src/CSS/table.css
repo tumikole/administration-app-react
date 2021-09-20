@@ -1,3 +1,10 @@
+.tableBody {
+    background-image: url("https://quocirca.com/wp-content/uploads/2020/08/Quocirca-Printing-Hybrid-Workplace-scaled.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
+
 .svg{
     
     width:20px;

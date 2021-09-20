@@ -7,7 +7,7 @@ class Home extends Component {
   render() {
       console.log('Home', this.props)
         return (
-            <div>
+            <div className="homeBody">
                 <Navbar navBar={[{name:'Add',location:"/Form"},
                 {name:'View List',location:"/List"},
                 { name: "Edit", location: "/Edit" }]} />

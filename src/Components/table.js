@@ -16,7 +16,7 @@ class table extends Component {
       console.log(this.props.isChecked ? "complete" : "not complete");
     }
     return (
-      <div>
+      <div className="tableBody">
         <Navbar
           navBar={[
             { name: "Home", location: "/Home" },

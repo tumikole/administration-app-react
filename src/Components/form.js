@@ -23,7 +23,7 @@ class form extends Component {
     } = this.props.mainState;
 
     return (
-      <div>
+      <div className="formBody">
         <div>
           <Navbar
             navBar={[

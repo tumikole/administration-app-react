@@ -45,6 +45,10 @@ class App extends Component {
     this.handleEdit = this.handleEdit.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleInput = this.handleInput.bind(this)
+
+
 
   }
 
@@ -100,8 +104,14 @@ class App extends Component {
     
   };
 
-  handleUpdateView = () => {
+  handleUpdate = () => {
 
+    
+  }
+
+  handleInput = () => {
+  
+   
   }
 
      handleDelete = index => {
@@ -109,6 +119,7 @@ class App extends Component {
       list.splice(index, 1);
       this.setState({ list });
     };
+
   
   
 
@@ -185,7 +196,8 @@ class App extends Component {
               displayCheckedItems={this.displayCheckedItems}
               handleEdit={this.handleEdit}
               update={this.state.update}
-              // updateEdit={this.updateEdit}
+              handleUpdate={this.handleUpdate}
+              handleInput={this.handleInput}
             />
           </Route>
         </Switch>
