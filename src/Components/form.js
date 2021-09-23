@@ -12,7 +12,7 @@ class form extends Component {
   render() {
     const {
       name,
-      surname,
+      surname
       position,
       task,
       salary,
